@@ -11,8 +11,17 @@ const GRID = document.getElementById("grid");
 const ERROR = document.getElementById("error");
 Math.floor(Math.random() * (max - min + 1)) + min;
 Math.floor(Math.random() * 10) + 1;
-const palabra = diccionario[Math.floor(Math.random() * diccionario.length)];
-console.log(palabra)
+var palabra = diccionario[Math.floor(Math.random() * diccionario.length)];
+
+
+const endpoint = "https://random-word-api.herokuapp.com/word?length=5"
+
+fetch(endpoint).then((response) =>{
+    response.json().then((data) => {
+        palabra = data[0].toUpperCase();
+        console.log(palabra)
+    });
+});
 
 
 button.addEventListener("click", () => {
